@@ -6,6 +6,7 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_sn0t7"]
 
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=1991546827]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_o7tup")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=317967409]
@@ -13,12 +14,52 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_sn0t7")
 
 [node name="Visuals" type="Node3D" parent="." unique_id=1516730722]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(1, 0, -1.7484554e-07, 0, 1, 0, 1.7484554e-07, 0, 1, 0, 0, 0)
 
 [node name="X Bot" parent="Visuals" unique_id=825854925 instance=ExtResource("2_nr340")]
 
+[node name="Skeleton3D" parent="Visuals/X Bot" index="0" unique_id=1474613444]
+transform = Transform3D(-1, 0, 8.742279e-08, 0, 1, 0, -8.742279e-08, 0, -1, 0, 0, 0)
+bones/0/position = Vector3(6.394334e-08, 1.0427046, 0.015542561)
+bones/11/rotation = Quaternion(0.25208968, 0.06028138, -0.2217039, 0.9400343)
+bones/12/rotation = Quaternion(-1.3028307e-08, -0.0011705203, 4.6071386e-07, 0.99999934)
+bones/13/rotation = Quaternion(5.9453367e-08, -0.0008078255, 1.06314715e-07, 0.9999997)
+bones/15/rotation = Quaternion(2.965328e-07, 5.9517056e-08, -1.7677671e-07, 1)
+bones/16/rotation = Quaternion(-5.9604815e-08, -4.4703484e-08, -1.6676497e-08, 1)
+bones/17/rotation = Quaternion(-2.980207e-08, 4.470348e-08, 1.5755359e-07, 1)
+bones/19/rotation = Quaternion(-1.610284e-08, 2.9908218e-08, 6.5658206e-08, 1)
+bones/20/rotation = Quaternion(-8.940679e-08, 1.4901168e-08, -1.633889e-07, 1)
+bones/21/rotation = Quaternion(-2.9802493e-08, -1.4901515e-08, 1.7121783e-07, 1)
+bones/23/rotation = Quaternion(6.963165e-08, 2.1727547e-11, -3.7766586e-07, 1)
+bones/24/rotation = Quaternion(-2.9801885e-08, 2.980198e-08, 5.2314135e-08, 1)
+bones/25/rotation = Quaternion(2.9801878e-08, -2.980199e-08, -1.4196121e-07, 1)
+bones/27/rotation = Quaternion(1.5838519e-07, 3.1912561e-10, 2.2508902e-07, 1)
+bones/28/rotation = Quaternion(1.4901183e-07, -1.4900509e-08, -2.529123e-07, 1)
+bones/29/rotation = Quaternion(2.980224e-08, 4.470347e-08, -1.7206185e-07, 1)
+bones/31/rotation = Quaternion(0.4844227, 0.5709704, -0.5261617, 0.40308973)
+bones/35/rotation = Quaternion(0.25206137, -0.06016923, 0.2217348, 0.9400417)
+bones/36/rotation = Quaternion(-2.6466566e-07, 0.0010427856, -5.918076e-07, 0.9999995)
+bones/37/rotation = Quaternion(3.2415794e-08, 0.0007452001, 2.4195734e-07, 0.99999976)
+bones/39/rotation = Quaternion(-1.4648407e-07, 1.043264e-07, 4.889808e-07, 1)
+bones/40/rotation = Quaternion(2.2151217e-07, -7.443435e-08, 3.1881788e-07, 1)
+bones/41/rotation = Quaternion(3.6455285e-07, -1.4945503e-08, 7.340713e-08, 1)
+bones/43/rotation = Quaternion(4.6807824e-07, 2.977653e-08, -2.304805e-07, 1)
+bones/44/rotation = Quaternion(-2.2318845e-07, -4.471037e-08, 2.5219015e-07, 1)
+bones/45/rotation = Quaternion(-4.275899e-07, 1.0429029e-07, -2.544494e-07, 1)
+bones/51/rotation = Quaternion(1.4118677e-07, 1.1082404e-07, 1.5064087e-07, 1)
+bones/52/rotation = Quaternion(-1.249087e-07, -1.4798432e-08, -2.286106e-07, 1)
+bones/53/rotation = Quaternion(1.9501242e-07, 2.9788241e-08, -1.2535747e-07, 1)
+bones/55/rotation = Quaternion(-1.8518817e-08, 0.011028456, 0.99993926, -4.9025385e-07)
+bones/56/rotation = Quaternion(-0.03943182, -2.4880556e-10, 2.1124885e-08, 0.9992223)
+bones/57/rotation = Quaternion(0.46033445, -7.743378e-09, -1.3930746e-07, 0.8877457)
+bones/60/rotation = Quaternion(-1.840963e-08, 0.011018208, 0.9999393, -4.792804e-07)
+bones/61/rotation = Quaternion(-0.039410245, -1.5021996e-08, 2.2099435e-08, 0.9992232)
+bones/62/rotation = Quaternion(0.4603244, -7.996993e-09, -1.3181912e-07, 0.8877508)
+
 [node name="Camera_mount" type="Node3D" parent="." unique_id=846733280]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.1304157, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Camera_mount" unique_id=993399097]
-transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -0.2709633, 1.6967444, -1.090416)
+transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -0.27096337, 0.36164272, -1.5351328)
+
+[editable path="Visuals/X Bot"]

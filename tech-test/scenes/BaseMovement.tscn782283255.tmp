@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://cfkliygmnttx8"]
+
+[ext_resource type="Texture2D" uid="uid://lck5vpyxqvlp" path="res://assets/kenney_prototype-textures/PNG/Dark/texture_05.png" id="1_omwxs"]
+[ext_resource type="Texture2D" uid="uid://d3y0b36u5chxk" path="res://assets/kenney_prototype-textures/PNG/Purple/texture_09.png" id="2_kyg71"]
+[ext_resource type="Texture2D" uid="uid://bomm7u86grmrl" path="res://assets/kenney_prototype-textures/PNG/Orange/texture_09.png" id="3_lm81j"]
+[ext_resource type="Texture2D" uid="uid://cjwom0327fh7g" path="res://assets/kenney_prototype-textures/PNG/Green/texture_09.png" id="4_cp3dw"]
+[ext_resource type="PackedScene" uid="uid://bt0dli3jpi28n" path="res://scenes/character_body_3d.tscn" id="5_s6x3x"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0alqf"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_dlhva"]
+sky_material = SubResource("ProceduralSkyMaterial_0alqf")
+
+[sub_resource type="Environment" id="Environment_5fca1"]
+background_mode = 2
+sky = SubResource("Sky_dlhva")
+sdfgi_enabled = true
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_srphm"]
+albedo_texture = ExtResource("1_omwxs")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m7f8g"]
+albedo_texture = ExtResource("2_kyg71")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhmgk"]
+albedo_texture = ExtResource("3_lm81j")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ikd7g"]
+albedo_texture = ExtResource("4_cp3dw")
+uv1_triplanar = true
+
+[node name="World" type="Node3D" unique_id=1245261714]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1489844177]
+environment = SubResource("Environment_5fca1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1953190375]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Map" type="Node3D" parent="." unique_id=553362225]
+
+[node name="Floor" type="CSGBox3D" parent="Map" unique_id=780060123]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+material_override = SubResource("StandardMaterial3D_srphm")
+use_collision = true
+size = Vector3(1000, 1, 1000)
+
+[node name="Reference A" type="CSGBox3D" parent="Map" unique_id=787941612]
+transform = Transform3D(0.7764621, 0, -0.630164, 0, 1, 0, 0.630164, 0, 0.7764621, -1.8941354, 0.5, 0.97001404)
+material_override = SubResource("StandardMaterial3D_m7f8g")
+use_collision = true
+
+[node name="Reference B" type="CSGBox3D" parent="Map" unique_id=1595366553]
+transform = Transform3D(0.8577696, 0, -0.51403433, 0, 1, 0, 0.51403433, 0, 0.8577696, -1.8941354, 0.5, -1.5099516)
+material_override = SubResource("StandardMaterial3D_uhmgk")
+use_collision = true
+
+[node name="Reference C" type="CSGBox3D" parent="Map" unique_id=1054660073]
+transform = Transform3D(0.45796132, 0, -0.88897216, 0, 1, 0, 0.88897216, 0, 0.45796132, 2.4150567, 1, 0.97001404)
+material_override = SubResource("StandardMaterial3D_ikd7g")
+use_collision = true
+size = Vector3(2, 2, 2)
+
+[node name="CharacterBody3D" parent="." unique_id=1991546827 instance=ExtResource("5_s6x3x")]
