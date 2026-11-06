@@ -1,8 +1,5 @@
 # Indie-Game-Tech-Demo
 
-This Repo contains testing for technologies to be used in Contingency 9.
-This repo is public for cv and employment purposes, the real product will be private but may be shared on request.
-If you are a possible employer reading this and wish to view the product if it exists it may be provided on request based on progress
-or timing.
-
+This Repo contains testing for technologies to be used in personal projects I may work on in the future.
+For anyone reading commits both CallumMatthew066 and Deathstroke0305 are me. I just have a different account logged in on the computer I am using so commits go under its name instead.
 Thankyou for reading
