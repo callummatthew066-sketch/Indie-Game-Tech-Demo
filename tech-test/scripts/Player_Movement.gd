@@ -17,6 +17,7 @@ func _input(event):
 		visuals.rotate_y((deg_to_rad(event.relative.x*SENS_HORIZONTAL)))
 		camera_mount.rotate_x(deg_to_rad(event.relative.y * SENS_VERTICAL))
 		camera_mount.rotation.x = clamp(camera_mount.rotation.x, deg_to_rad(-40), deg_to_rad(55))
+		camera_mount.rotation.z = 0
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -28,8 +29,15 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
+	
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	print("---")
+	print(camera_mount.global_transform.basis.z)
+	print(global_transform.basis.z)
+	print("---")
+	var align := Vector3(camera_mount.global_transform.basis.z.x, 0.0, camera_mount.global_transform.basis.z.z)
+	var char_basis := Basis(camera_mount.global_transform.basis.x, camera_mount.global_transform.basis.y, align)
+	var direction := -1 * (char_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		velocity.x = direction.x * SPEED
 		visuals.look_at((visuals.global_position + direction))
