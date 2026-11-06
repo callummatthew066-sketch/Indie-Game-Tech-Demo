@@ -48,22 +48,26 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 material_override = SubResource("StandardMaterial3D_srphm")
 use_collision = true
+collision_layer = 3
 size = Vector3(1000, 1, 1000)
 
 [node name="Reference A" type="CSGBox3D" parent="Map" unique_id=787941612]
 transform = Transform3D(0.7764621, 0, -0.630164, 0, 1, 0, 0.630164, 0, 0.7764621, -1.8941354, 0.5, 0.97001404)
 material_override = SubResource("StandardMaterial3D_m7f8g")
 use_collision = true
+collision_layer = 3
 
 [node name="Reference B" type="CSGBox3D" parent="Map" unique_id=1595366553]
 transform = Transform3D(0.8577696, 0, -0.51403433, 0, 1, 0, 0.51403433, 0, 0.8577696, -1.8941354, 0.5, -1.5099516)
 material_override = SubResource("StandardMaterial3D_uhmgk")
 use_collision = true
+collision_layer = 3
 
 [node name="Reference C" type="CSGBox3D" parent="Map" unique_id=1054660073]
 transform = Transform3D(0.45796132, 0, -0.88897216, 0, 1, 0, 0.88897216, 0, 0.45796132, 2.4150567, 1, 0.97001404)
 material_override = SubResource("StandardMaterial3D_ikd7g")
 use_collision = true
+collision_layer = 3
 size = Vector3(2, 2, 2)
 
 [node name="CharacterBody3D" parent="." unique_id=1991546827 instance=ExtResource("5_s6x3x")]

@@ -2,6 +2,9 @@ extends CharacterBody3D
 @onready var camera_mount: Node3D = $Camera_mount
 @onready var visuals: Node3D = $Visuals
 @onready var animation_player: AnimationPlayer = $"Visuals/X Bot/AnimationPlayer"
+@onready var eyeline: RayCast3D = $Camera_mount/Camera3D/Eyeline
+@onready var head_focus: Marker3D = $Camera_mount/Camera3D/Head_Focus
+@onready var empty_focal: Node3D = $Camera_mount/Camera3D/Empty_focal
 
 
 const SPEED = 5.0
@@ -11,11 +14,20 @@ const SENS_VERTICAL = 0.5
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
+func get_focal():
+	var focal_point
+	if(eyeline.is_colliding()):
+		focal_point = eyeline.get_collision_point()
+	else:
+		focal_point = empty_focal.global_position
+	print(focal_point)
+	print(global_position)
+	head_focus.global_position = focal_point
 func _input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x * SENS_HORIZONTAL))
 		visuals.rotate_y((deg_to_rad(event.relative.x*SENS_HORIZONTAL)))
-		camera_mount.rotate_x(deg_to_rad(event.relative.y * SENS_VERTICAL))
+		camera_mount.rotate_x(deg_to_rad(-event.relative.y * SENS_VERTICAL))
 		camera_mount.rotation.x = clamp(camera_mount.rotation.x, deg_to_rad(-40), deg_to_rad(55))
 		camera_mount.rotation.z = 0
 func _physics_process(delta: float) -> void:
@@ -48,3 +60,5 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+	
+	get_focal()

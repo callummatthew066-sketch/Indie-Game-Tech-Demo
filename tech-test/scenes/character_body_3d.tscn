@@ -451,7 +451,13 @@ bind/63/name = &"mixamorig_LeftToe_End"
 bind/63/bone = -1
 bind/63/pose = Transform3D(-0.99971825, 0.02373695, 1.4299479e-06, -3.013147e-07, -7.293177e-05, 1, 0.02373695, 0.99971825, 7.2918374e-05, 0.082054354, -0.17246021, -0.0019622627)
 
-[sub_resource type="JointLimitationCone3D" id="JointLimitationCone3D_xvofd"]
+[sub_resource type="JointLimitationCone3D" id="JointLimitationCone3D_o7tup"]
+angle = 0.99309236
+
+[sub_resource type="JointLimitationCone3D" id="JointLimitationCone3D_cvunv"]
+angle = 2.8345892
+
+[sub_resource type="JointLimitationCone3D" id="JointLimitationCone3D_nr340"]
 
 [sub_resource type="Animation" id="Animation_voefi"]
 resource_name = "Take 001"
@@ -1440,10 +1446,12 @@ skeleton = NodePath("..")
 
 [node name="CCDIK3D" type="CCDIK3D" parent="Visuals/X Bot/Skeleton3D" unique_id=1071006058]
 physics_interpolation_mode = 1
-angular_delta_limit = 0.17453292519943295
+influence = 0.72
+min_distance = 0.0
+angular_delta_limit = 3.141592653589793
 deterministic = true
 setting_count = 1
-settings/0/target_node = NodePath("../../../../Camera_mount/Head_Focus")
+settings/0/target_node = NodePath("../../../../Camera_mount/Camera3D/Head_Focus")
 settings/0/root_bone_name = "mixamorig_Neck"
 settings/0/root_bone = 4
 settings/0/end_bone_name = "mixamorig_HeadTop_End"
@@ -1451,13 +1459,17 @@ settings/0/end_bone = 6
 settings/0/extend_end_bone = false
 settings/0/joint_count = 3
 settings/0/joints/0/rotation_axis = 3
-settings/0/joints/0/limitation = SubResource("JointLimitationCone3D_xvofd")
+settings/0/joints/0/limitation = SubResource("JointLimitationCone3D_o7tup")
 settings/0/joints/0/limitation/right_axis = 0
 settings/0/joints/0/limitation/rotation_offset = Quaternion(0, 0, 0, 1)
-settings/0/joints/1/rotation_axis = 3
-settings/0/joints/1/limitation = null
+settings/0/joints/1/rotation_axis = 1
+settings/0/joints/1/limitation = SubResource("JointLimitationCone3D_cvunv")
+settings/0/joints/1/limitation/right_axis = 0
+settings/0/joints/1/limitation/rotation_offset = Quaternion(0, 0, -0.207912, 0.978148)
 settings/0/joints/2/rotation_axis = 3
-settings/0/joints/2/limitation = null
+settings/0/joints/2/limitation = SubResource("JointLimitationCone3D_nr340")
+settings/0/joints/2/limitation/right_axis = 0
+settings/0/joints/2/limitation/rotation_offset = Quaternion(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals/X Bot" unique_id=1369528141]
 callback_mode_process = 0
@@ -1469,8 +1481,12 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1
 [node name="Camera3D" type="Camera3D" parent="Camera_mount" unique_id=993399097]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.27096337, 0.36164272, -1.5351328)
 
-[node name="Head_Focus" type="Marker3D" parent="Camera_mount" unique_id=1685078661]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27, 0.362, 2.9968097)
+[node name="Head_Focus" type="Marker3D" parent="Camera_mount/Camera3D" unique_id=1685078661]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.0009637773, 0.00035727024, -4.5319424)
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Camera_mount/Head_Focus" unique_id=1417278235]
-radius = 0.02
+[node name="Eyeline" type="RayCast3D" parent="Camera_mount/Camera3D" unique_id=1250974913]
+target_position = Vector3(0, 0, -8)
+collision_mask = 2
+
+[node name="Empty_focal" type="Node3D" parent="Camera_mount/Camera3D" unique_id=1445001057]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
