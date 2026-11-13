@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bk2rphx7uajv3"]
+
+[ext_resource type="Script" uid="uid://dpx7wvyr5h7nb" path="res://door.gd" id="1_yfgsh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bhunq"]
+
+[node name="Door" type="Node3D" unique_id=1743093622]
+script = ExtResource("1_yfgsh")
+
+[node name="collider" type="CSGBox3D" parent="." unique_id=329464274]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0)
+layers = 2051
+use_collision = true
+collision_layer = 3
+size = Vector3(1, 2, 0.05)
+material = SubResource("StandardMaterial3D_bhunq")

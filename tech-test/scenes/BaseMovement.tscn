@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cfkliygmnttx8"]
 
 [ext_resource type="Texture2D" uid="uid://lck5vpyxqvlp" path="res://assets/kenney_prototype-textures/PNG/Dark/texture_05.png" id="1_omwxs"]
+[ext_resource type="PackedScene" uid="uid://bk2rphx7uajv3" path="res://scenes/Door.tscn" id="1_vbtnw"]
 [ext_resource type="Texture2D" uid="uid://d3y0b36u5chxk" path="res://assets/kenney_prototype-textures/PNG/Purple/texture_09.png" id="2_kyg71"]
 [ext_resource type="Texture2D" uid="uid://bomm7u86grmrl" path="res://assets/kenney_prototype-textures/PNG/Orange/texture_09.png" id="3_lm81j"]
 [ext_resource type="Texture2D" uid="uid://cjwom0327fh7g" path="res://assets/kenney_prototype-textures/PNG/Green/texture_09.png" id="4_cp3dw"]
@@ -43,6 +44,14 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="Map" type="Node3D" parent="." unique_id=553362225]
+
+[node name="Door" parent="Map" unique_id=1743093622 instance=ExtResource("1_vbtnw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.9784486)
+TargetPosition = Vector3(0, 2, 0)
+
+[node name="Door2" parent="Map" unique_id=1018510654 instance=ExtResource("1_vbtnw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.7506294)
+TargetRotationDeg = 90.0
 
 [node name="Floor" type="CSGBox3D" parent="Map" unique_id=780060123]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)

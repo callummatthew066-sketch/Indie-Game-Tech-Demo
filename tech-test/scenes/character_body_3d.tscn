@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b5d64uyen7ykb" path="res://scripts/Player_Movement.gd" id="1_o7tup"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_sn0t7"]
+height = 1.8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ai64h"]
 resource_name = "Beta_HighLimbsGeoSG3"
@@ -968,7 +969,7 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0
 script = ExtResource("1_o7tup")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=317967409]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CylinderShape3D_sn0t7")
 
 [node name="Visuals" type="Node3D" parent="." unique_id=1516730722]
@@ -1490,3 +1491,7 @@ collision_mask = 2
 
 [node name="Empty_focal" type="Node3D" parent="Camera_mount/Camera3D" unique_id=1445001057]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="Interact" type="RayCast3D" parent="Camera_mount/Camera3D" unique_id=1103111879]
+target_position = Vector3(0, 0, -3)
+collision_mask = 2

@@ -5,6 +5,7 @@ extends CharacterBody3D
 @onready var eyeline: RayCast3D = $Camera_mount/Camera3D/Eyeline
 @onready var head_focus: Marker3D = $Camera_mount/Camera3D/Head_Focus
 @onready var empty_focal: Node3D = $Camera_mount/Camera3D/Empty_focal
+@onready var interact: RayCast3D = $Camera_mount/Camera3D/Interact
 
 
 const SPEED = 5.0
@@ -20,9 +21,14 @@ func get_focal():
 		focal_point = eyeline.get_collision_point()
 	else:
 		focal_point = empty_focal.global_position
-	print(focal_point)
-	print(global_position)
 	head_focus.global_position = focal_point
+
+func enviro_interact():
+	if interact.is_colliding():
+		var targetObject = interact.get_collider().get_parent()
+		if ("toggle" in targetObject):
+			targetObject.toggle = !targetObject.toggle
+
 func _input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x * SENS_HORIZONTAL))
@@ -30,6 +36,7 @@ func _input(event):
 		camera_mount.rotate_x(deg_to_rad(-event.relative.y * SENS_VERTICAL))
 		camera_mount.rotation.x = clamp(camera_mount.rotation.x, deg_to_rad(-40), deg_to_rad(55))
 		camera_mount.rotation.z = 0
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -38,15 +45,17 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-
+	if interact.is_colliding():
+		print("Press E to Interact")
+		print(interact.get_collider().get_parent())
+		if ("toggle" in interact.get_collider().get_parent()):
+			print("target is toggelable")
+	if Input.is_action_just_pressed("Interact"):
+		enviro_interact()
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
-	print("---")
-	print(camera_mount.global_transform.basis.z)
-	print(global_transform.basis.z)
-	print("---")
 	var align := Vector3(camera_mount.global_transform.basis.z.x, 0.0, camera_mount.global_transform.basis.z.z)
 	var char_basis := Basis(camera_mount.global_transform.basis.x, camera_mount.global_transform.basis.y, align)
 	var direction := -1 * (char_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
